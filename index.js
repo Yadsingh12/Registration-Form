@@ -46,6 +46,14 @@ app.post("/register", async (req, res) => {
   }
 });
 
+app.get("/success", (req, res) => {
+  res.sendFile(__dirname + "/pages/success.html");
+});
+
+app.get("/error", (req, res) => {
+  res.sendFile(__dirname + "/pages/error.html");
+});
+
 app.listen(port, () => {
   console.log(`server is running on port ${port}`);
 });
