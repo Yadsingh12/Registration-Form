@@ -15,6 +15,14 @@ mongoose.connect(
   `mongodb+srv://${username}:${password}@cluster0.zdhq4.mongodb.net/registrationForm`
 );
 
+const registrationSchema = new mongoose.Schema({
+  name: String,
+  email: String,
+  password: String,
+});
+
+const Registration = mongoose.model("Registration", registrationSchema);
+
 app.get("/", (req, res) => {
   res.sendFile(__dirname + "/pages/index.html");
 });
