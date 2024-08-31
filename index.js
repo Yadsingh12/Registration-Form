@@ -30,6 +30,22 @@ app.get("/", (req, res) => {
   res.sendFile(__dirname + "/pages/index.html");
 });
 
+app.post("/register", async (req, res) => {
+  try {
+    const { name, email, password } = req.body;
+    const registrationData = new Registration({
+      name,
+      email,
+      password,
+    });
+    await registrationData.save();
+    res.redirect("/success");
+  } catch (error) {
+    console.log(error);
+    res.redirect("/error");
+  }
+});
+
 app.listen(port, () => {
   console.log(`server is running on port ${port}`);
 });
