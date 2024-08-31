@@ -23,6 +23,9 @@ const registrationSchema = new mongoose.Schema({
 
 const Registration = mongoose.model("Registration", registrationSchema);
 
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
+
 app.get("/", (req, res) => {
   res.sendFile(__dirname + "/pages/index.html");
 });
